@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clínica Vida e Saúde</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+    }
+
+    header {
+      background-color: #023e8a;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .medico {
+      background-color: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .medico:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .medico img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .medico h3 {
+      margin: 15px 0 5px;
+      font-size: 20px;
+    }
+
+    .medico p {
+      margin: 0 0 15px;
+      color: #555;
+    }
+
+    footer {
+      background-color: #03045e;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    footer h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      margin: 5px 0;
+      font-size: 15px;
+    }
+
+    /* Chat flutuante */
+    #chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #48cae4;
+      color: white;
+      font-size: 24px;
+      padding: 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    #chat-button:hover {
+      background-color: #00b4d8;
+    }
+
+    #chat-box {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      background-color: white;
+      border: 2px solid #023e8a;
+      border-radius: 10px;
+      overflow: hidden;
+      z-index: 1000;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    #chat-header {
+      background-color: #023e8a;
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #chat-messages {
+      padding: 10px;
+      height: 200px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+
+    #chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+
+    #chat-input input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    #chat-input button {
+      background-color: #48cae4;
+      border: none;
+      color: white;
+      padding: 0 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #chat-input button:hover {
+      background-color: #00b4d8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Clínica Vida e Saúde</h1>
+    <p>Cuidando da sua saúde com carinho e excelência.</p>
+  </header>
+
+  <section class="container">
+    <div class="medico">
+      <img src="imagens/gine-maria-oliveira-.png" alt="Dra. Maria Oliveira - Ginecologista">
+      <h3>Dra. Maria Oliveira</h3>
+      <p>Ginecologista</p>
+    </div>
+    <div class="medico">
+      <img src="imagens/cardio-pedro-lima.png" alt="Dr. Pedro Lima - Cardiologista">
+      <h3>Dr. Pedro Lima</h3>
+      <p>Cardiologista</p>
+    </div>
+    <div class="medico">
+      <img src="imagens/pediatra-ana-costa.png" alt="Dra. Ana Costa - Pediatra">
+      <h3>Dra. Ana Costa</h3>
+      <p>Pediatra</p>
+    </div>
+    <div class="medico">
+      <img src="imagens/geral-joao-silva.png" alt="Dr. João Silva - Clínico Geral">
+      <h3>Dr. João Silva</h3>
+      <p>Clínico Geral</p>
+    </div>
+    <section style="padding: 40px 20px; background-color: #e0f7fa;">
+      <h2 style="text-align:center; font-size: 26px; margin-bottom: 20px;">Agende sua Consulta</h2>
+      <form style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+        <input type="text" placeholder="Nome completo" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;" />
+        <input type="text" placeholder="CPF" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;" />
+        <input type="date" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;" />
+        <select required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+          <option value="">Selecione a especialidade</option>
+          <option>Ginecologia</option>
+          <option>Cardiologia</option>
+          <option>Pediatria</option>
+          <option>Clínico Geral</option>
+        </select>
+        <button type="submit" style="padding: 12px; border: none; background-color: #00b4d8; color: white; font-weight: bold; border-radius: 8px; cursor: pointer;">
+          Enviar Agendamento
+        </button>
+      </form>
+    </section>
+    
+
+  <footer>
+    <h2>Agende sua consulta</h2>
+    <p>Telefone: (61) 99999-9999</p>
+    <p>E-mail: vidaesaude@gmail.com</p>
+    <p>Endereço: Asa Sul, - Brasilia - DF</p>
+  </footer>
+
+  <!-- Chat flutuante -->
+  <div id="chat-button" onclick="toggleChat()">💬</div>
+
+  <div id="chat-box">
+    <div id="chat-header">
+      Atendimento Online
+      <span onclick="toggleChat()" style="cursor: pointer;">✖</span>
+    </div>
+    <div id="chat-messages">
+      <p><strong>Atendente:</strong> Olá! Como posso ajudar?</p>
+    </div>
+    <div id="chat-input">
+      <input type="text" id="userMessage" placeholder="Digite sua mensagem..." />
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const box = document.getElementById("chat-box");
+      box.style.display = box.style.display === "block" ? "none" : "block";
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("userMessage");
+      const message = input.value.trim();
+      if (message !== "") {
+        const chatMessages = document.getElementById("chat-messages");
+        const userMsg = document.createElement("p");
+        userMsg.innerHTML = `<strong>Você:</strong> ${message}`;
+        chatMessages.appendChild(userMsg);
+        input.value = "";
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+    }
+  </script>
+
+</body>
+</html>
