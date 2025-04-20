@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
@@ -44,7 +44,10 @@
       overflow: hidden;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      max-height: 400px;
+      position: relative;
     }
 
     .medico:hover {
@@ -67,6 +70,21 @@
     .medico p {
       margin: 0 0 15px;
       color: #555;
+    }
+
+    .descricao {
+      display: none;
+      padding: 0 15px 15px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .medico.expandido {
+      max-height: 600px;
+    }
+
+    .medico.expandido .descricao {
+      display: block;
     }
 
     footer {
@@ -177,47 +195,60 @@
       <img src="imagens/gine-maria-oliveira-.png" alt="Dra. Maria Oliveira - Ginecologista">
       <h3>Dra. Maria Oliveira</h3>
       <p>Ginecologista</p>
+      <div class="descricao">
+        Especialista em saúde da mulher, com foco em prevenção, planejamento familiar e acompanhamento pré-natal humanizado.
+      </div>
     </div>
     <div class="medico">
       <img src="imagens/cardio-pedro-lima.png" alt="Dr. Pedro Lima - Cardiologista">
       <h3>Dr. Pedro Lima</h3>
       <p>Cardiologista</p>
+      <div class="descricao">
+        Atua no diagnóstico e tratamento de doenças do coração, com experiência em hipertensão e arritmias.
+      </div>
     </div>
     <div class="medico">
       <img src="imagens/pediatra-ana-costa.png" alt="Dra. Ana Costa - Pediatra">
       <h3>Dra. Ana Costa</h3>
       <p>Pediatra</p>
+      <div class="descricao">
+        Cuida da saúde infantil com carinho e dedicação, acompanhando o desenvolvimento desde o nascimento.
+      </div>
     </div>
     <div class="medico">
       <img src="imagens/geral-joao-silva.png" alt="Dr. João Silva - Clínico Geral">
       <h3>Dr. João Silva</h3>
       <p>Clínico Geral</p>
+      <div class="descricao">
+        Realiza atendimentos gerais e encaminhamentos, sempre prezando pelo atendimento humanizado e preciso.
+      </div>
     </div>
-    <section style="padding: 40px 20px; background-color: #e0f7fa;">
-      <h2 style="text-align:center; font-size: 26px; margin-bottom: 20px;">Agende sua Consulta</h2>
-      <form style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
-        <input type="text" placeholder="Nome completo" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;" />
-        <input type="text" placeholder="CPF" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;" />
-        <input type="date" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;" />
-        <select required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
-          <option value="">Selecione a especialidade</option>
-          <option>Ginecologia</option>
-          <option>Cardiologia</option>
-          <option>Pediatria</option>
-          <option>Clínico Geral</option>
-        </select>
-        <button type="submit" style="padding: 12px; border: none; background-color: #00b4d8; color: white; font-weight: bold; border-radius: 8px; cursor: pointer;">
-          Enviar Agendamento
-        </button>
-      </form>
-    </section>
-    
+  </section>
+
+  <section style="padding: 40px 20px; background-color: #e0f7fa;">
+    <h2 style="text-align:center; font-size: 26px; margin-bottom: 20px;">Agende sua Consulta</h2>
+    <form style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+      <input type="text" placeholder="Nome completo" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;" />
+      <input type="text" placeholder="CPF" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;" />
+      <input type="date" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;" />
+      <select required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+        <option value="">Selecione a especialidade</option>
+        <option>Ginecologia</option>
+        <option>Cardiologia</option>
+        <option>Pediatria</option>
+        <option>Clínico Geral</option>
+      </select>
+      <button type="submit" style="padding: 12px; border: none; background-color: #00b4d8; color: white; font-weight: bold; border-radius: 8px; cursor: pointer;">
+        Enviar Agendamento
+      </button>
+    </form>
+  </section>
 
   <footer>
     <h2>Agende sua consulta</h2>
     <p>Telefone: (61) 99999-9999</p>
     <p>E-mail: vidaesaude@gmail.com</p>
-    <p>Endereço: Asa Sul, - Brasilia - DF</p>
+    <p>Endereço: Asa Sul, - Brasília - DF</p>
   </footer>
 
   <!-- Chat flutuante -->
@@ -255,6 +286,19 @@
         chatMessages.scrollTop = chatMessages.scrollHeight;
       }
     }
+
+    // Acordeão com toggle
+    const medicos = document.querySelectorAll('.medico');
+
+    medicos.forEach(card => {
+      card.addEventListener('click', () => {
+        const isExpanded = card.classList.contains('expandido');
+        medicos.forEach(m => m.classList.remove('expandido'));
+        if (!isExpanded) {
+          card.classList.add('expandido');
+        }
+      });
+    });
   </script>
 
 </body>
